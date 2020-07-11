@@ -26,7 +26,7 @@ public class PlayerDribble : MonoBehaviour
    // Update is called once per frame
    void Update()
    {
-      target.transform.Translate(new Vector3(0f, Input.GetAxisRaw("MouseY"), 0f) * Time.deltaTime * 10f);
+      target.transform.Translate(new Vector3(Input.GetAxisRaw("MouseX"), Input.GetAxisRaw("MouseY"), 0f) * Time.deltaTime * 10f);
    }
 
    private void OnCollisionEnter(Collision collision)

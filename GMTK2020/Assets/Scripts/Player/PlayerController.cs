@@ -37,6 +37,11 @@ public class PlayerController : MonoBehaviour
       Movement();
       Turn();
       UpdateAnimations();
+
+      if (Input.GetButtonDown("Fire1"))
+      {
+         _animator.SetTrigger("KickTrigger");
+      }
    }
 
    private void Movement()

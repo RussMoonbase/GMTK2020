@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class PlayerDribble : MonoBehaviour
 {
+   public static PlayerDribble instance;
+
    public GameObject playerModel;
    public GameObject target;
    public GameObject player;
 
-   private 
+   public bool isKicking = false;
+
+   private void Awake()
+   {
+      instance = this;
+   }
 
    // Start is called before the first frame update
    void Start()
@@ -26,15 +33,18 @@ public class PlayerDribble : MonoBehaviour
    {
       if (collision.gameObject.tag == "Ball")
       {
-         Vector3 direction = target.transform.position - player.transform.position;
-         direction = direction.normalized;
-         Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
 
-         if (rb)
+         if (isKicking)
          {
-            rb.AddForce(direction * 5f, ForceMode.Impulse);
-         }
-         
+            Vector3 direction = target.transform.position - player.transform.position;
+            direction = direction.normalized;
+            Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
+
+            if (rb)
+            {
+               rb.AddForce(direction * 5f, ForceMode.Impulse);
+            }
+         }        
       }
    }
 }

@@ -880,7 +880,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.23243769, y: 0.018234117, z: -0.004358456, w: 0.9724306}
+  m_LocalRotation: {x: 0.23243767, y: 0.01823415, z: -0.004358464, w: 0.9724306}
   m_LocalPosition: {x: -0.61, y: 8.35, z: -16.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1029,7 +1029,7 @@ GameObject:
   - component: {fileID: 1157536341}
   - component: {fileID: 1157536342}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: FootCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1138,8 +1138,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerModel: {fileID: 1201399103}
-  aim: {fileID: 1701214316}
+  target: {fileID: 1701214316}
   player: {fileID: 12127186}
+  isKicking: 0
 --- !u!1 &1201399103 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 296e5f1a82c7d3949b60b0f5e502bf53,
@@ -1211,7 +1212,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1499090443}
-  m_LocalRotation: {x: 0.23243769, y: 0.018234117, z: -0.004358456, w: 0.9724306}
+  m_LocalRotation: {x: 0.23243767, y: 0.01823415, z: -0.004358464, w: 0.9724306}
   m_LocalPosition: {x: -0.61, y: 8.35, z: -16.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

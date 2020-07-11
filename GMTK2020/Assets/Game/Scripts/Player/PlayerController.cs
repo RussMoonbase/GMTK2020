@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
    {
       _horInput = Input.GetAxisRaw("Horizontal");
       _vertInput = Input.GetAxisRaw("Vertical");
+      _moveInput = new Vector3(_vertInput, 0, _horInput);
       Movement();
       Turn();
       UpdateAnimations();
@@ -56,12 +57,14 @@ public class PlayerController : MonoBehaviour
          _moveVector.Normalize();
       }
 
+      _moveVector.y += Physics.gravity.y * Time.deltaTime;
+
       _charController.Move(_moveVector * moveSpeed * Time.deltaTime);
    }
 
    private void Turn()
    {
-      if (_moveVector != Vector3.zero)
+      if (_moveInput != Vector3.zero)
       {
          Quaternion newRotateDir = Quaternion.LookRotation(new Vector3(_moveVector.x, 0f, _moveVector.z));
          playerModel.transform.rotation = Quaternion.Lerp(playerModel.transform.rotation, newRotateDir, rotateSpeed * Time.deltaTime);
@@ -70,7 +73,6 @@ public class PlayerController : MonoBehaviour
 
    private void UpdateAnimations()
    {
-      _moveInput = new Vector3(_vertInput, 0, _horInput);
       _animator.SetFloat(AnimatorParameters.MoveVert.ToString(), _moveInput.magnitude);
    }
 }

@@ -33,18 +33,20 @@ public class PlayerDribble : MonoBehaviour
    {
       if (collision.gameObject.tag == "Ball")
       {
-
+         Vector3 direction = target.transform.position - player.transform.position;
+         direction = direction.normalized;
+         Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
          if (isKicking)
          {
-            Vector3 direction = target.transform.position - player.transform.position;
-            direction = direction.normalized;
-            Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
-
             if (rb)
             {
                rb.AddForce(direction * 5f, ForceMode.Impulse);
             }
-         }        
+         }
+         else
+         {
+            rb.AddForce(direction * 0.3f, ForceMode.Impulse);
+         }
       }
    }
 }

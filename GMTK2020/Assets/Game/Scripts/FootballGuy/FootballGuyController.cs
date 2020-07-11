@@ -19,13 +19,17 @@ public class FootballGuyController : MonoBehaviour
    // Update is called once per frame
    void Update()
    {
-      navAgent.SetDestination(destination.position);
+      if (navAgent.enabled)
+      {
+         navAgent.SetDestination(destination.position);
+      }
+      
    }
 
    public void TurnOnRagdoll(Collider col)
    {
       _animator.enabled = false;
-      navAgent.speed = 0f;
+      navAgent.enabled = false;
       col.attachedRigidbody.AddForce((Camera.main.transform.forward * 150f), ForceMode.Impulse);
    }
 }

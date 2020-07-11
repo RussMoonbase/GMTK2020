@@ -9,6 +9,7 @@ public class PlayerDribble : MonoBehaviour
    public GameObject playerModel;
    public GameObject target;
    public GameObject player;
+   public Ball ball;
 
    public bool isKicking = false;
 
@@ -26,7 +27,8 @@ public class PlayerDribble : MonoBehaviour
    // Update is called once per frame
    void Update()
    {
-      target.transform.Translate(new Vector3(Input.GetAxisRaw("MouseX"), Input.GetAxisRaw("MouseY"), 0f) * Time.deltaTime * 10f);
+      //target.transform.Translate(new Vector3(Input.GetAxisRaw("MouseX"), Input.GetAxisRaw("MouseY"), 0f) * Time.deltaTime * 10f);
+      target.transform.Translate(new Vector3(0f, Input.GetAxisRaw("MouseY"), 0f) * Time.deltaTime * 10f);
    }
 
    private void OnCollisionEnter(Collision collision)
@@ -38,9 +40,16 @@ public class PlayerDribble : MonoBehaviour
          Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
          if (isKicking)
          {
+            ball = collision.gameObject.GetComponent<Ball>();
+
             if (rb)
             {
                rb.AddForce(direction * 5f, ForceMode.Impulse);
+            }
+
+            if (ball)
+            {
+               ball.wasKicked = true;
             }
          }
          else

@@ -125,3 +125,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 2644529958866928240}
   maxTimeSittingStill: 10
+  minRigidBodyVel: 2
+  wasKicked: 0

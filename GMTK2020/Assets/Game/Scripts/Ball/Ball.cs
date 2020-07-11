@@ -8,8 +8,11 @@ public class Ball : MonoBehaviour
 
    //public float deathTime;
    public float maxTimeSittingStill;
+   public float minRigidBodyVel;
+   public bool wasKicked = false;
 
    private float _timer;
+   public float currentVelocity;
 
    private void Start()
    {
@@ -18,8 +21,9 @@ public class Ball : MonoBehaviour
 
    private void FixedUpdate()
    {
-      Debug.Log("Velocity = " + rb.velocity.magnitude);
-      if (rb.velocity.magnitude <= 1f)
+      currentVelocity = rb.velocity.magnitude;
+      //Debug.Log("Velocity = " + rb.velocity.magnitude);
+      if (rb.velocity.magnitude <= minRigidBodyVel && wasKicked)
       {
          _timer += Time.deltaTime;
 

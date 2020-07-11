@@ -1252,7 +1252,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191bbefd71988e048a4935ef2f9ea052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footballGuySpawnPoints: []
+  footballGuySpawnPoints:
+  - {fileID: 1425228677}
+  - {fileID: 1187783020}
+  - {fileID: 2127838044}
   goalPoints:
   - {fileID: 2034975599}
   - {fileID: 1908276714}
@@ -1623,6 +1626,7 @@ MonoBehaviour:
   playerModel: {fileID: 1201399103}
   target: {fileID: 1154653245}
   player: {fileID: 12127186}
+  ball: {fileID: 0}
   isKicking: 0
 --- !u!1 &1187783019
 GameObject:

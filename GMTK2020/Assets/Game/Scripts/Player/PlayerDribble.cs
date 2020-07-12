@@ -30,9 +30,10 @@ public class PlayerDribble : MonoBehaviour
    void Update()
    {
       //target.transform.Translate(new Vector3(Input.GetAxisRaw("MouseX"), Input.GetAxisRaw("MouseY"), 0f) * Time.deltaTime * 10f);
-      _aimVector = new Vector3(0f, Input.GetAxisRaw("MouseY"), 0f);
-      _aimVector.y = Mathf.Clamp(_aimVector.y, 0.3f, 9f);
-      target.transform.Translate(_aimVector * Time.deltaTime * 10f);
+      target.transform.Translate(new Vector3(0f, Input.GetAxisRaw("MouseY"), 0f) * Time.deltaTime * 10f);
+      _aimVector = target.transform.position;
+      _aimVector.y = Mathf.Clamp(_aimVector.y, 0.3f, 11f);
+      target.transform.position = _aimVector;
    }
 
    private void OnCollisionEnter(Collision collision)

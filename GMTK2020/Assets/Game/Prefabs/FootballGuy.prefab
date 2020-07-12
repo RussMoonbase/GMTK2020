@@ -144,6 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navAgent: {fileID: 1382841146095398903}
   destination: {fileID: 0}
+  deathWaitTime: 4
   _animator: {fileID: 4781207740739455277}
 --- !u!54 &1382841146232220127
 Rigidbody:

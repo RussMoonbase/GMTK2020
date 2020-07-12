@@ -48,7 +48,11 @@ public class GameManager : MonoBehaviour
                SpawnManager.instance.canSpawn = true;
                SpawnManager.instance.spawnOpponentCount = 0;
                _quaterFinished = false;
-               UIManager.instance.quaterNumberText.text = quarterNum.ToString();
+               if (quarterNum != 5)
+               {
+                  UIManager.instance.quaterNumberText.text = quarterNum.ToString();
+               }
+               
             }
          }
       }

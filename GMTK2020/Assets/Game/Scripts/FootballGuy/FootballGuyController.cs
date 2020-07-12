@@ -28,8 +28,13 @@ public class FootballGuyController : MonoBehaviour
 
    public void TurnOnRagdoll(Collider col)
    {
-      _animator.enabled = false;
-      navAgent.enabled = false;
+      if (_animator.enabled)
+      {
+         GameManager.instance.opponentCount--;
+         _animator.enabled = false;
+         navAgent.enabled = false;
+      }
+
       col.attachedRigidbody.AddForce((Camera.main.transform.forward * 150f), ForceMode.Impulse);
    }
 }

@@ -15,6 +15,7 @@ public class SpawnManager : MonoBehaviour
    public bool canSpawnBall;
 
    private GameObject spawnedOpponent;
+   public int spawnOpponentCount;
 
    private void Awake()
    {
@@ -34,6 +35,10 @@ public class SpawnManager : MonoBehaviour
       {
          SpawnFootballGuy();
          canSpawn = false;
+         if (spawnOpponentCount < GameManager.instance.maxOpponentCount)
+         {
+            StartCoroutine(ResetCanSpawn());
+         }
       }
 
       if (canSpawnBall)
@@ -50,7 +55,12 @@ public class SpawnManager : MonoBehaviour
       {
          for (int i = 0; i < footballGuySpawnPoints.Length; i++)
          {
-            spawnedOpponent = Instantiate(footballGuy, footballGuySpawnPoints[i].position, footballGuySpawnPoints[i].rotation);
+            if (GameManager.instance.quarterNum <= 4)
+            {
+               spawnedOpponent = Instantiate(footballGuy, footballGuySpawnPoints[i].position, footballGuySpawnPoints[i].rotation);
+            }
+            GameManager.instance.opponentCount++;
+            spawnOpponentCount++;
             spawnedOpponent.GetComponent<FootballGuyController>().destination = goalPoints[i];
          }
       }
@@ -60,5 +70,11 @@ public class SpawnManager : MonoBehaviour
    {
       int randomNum = Random.Range(0, ballSpawnPoints.Length);
       Instantiate(ball, ballSpawnPoints[randomNum].position, Quaternion.identity);
+   }
+
+   private IEnumerator ResetCanSpawn()
+   {
+      yield return new WaitForSeconds(10.0f);
+      canSpawn = true;
    }
 }

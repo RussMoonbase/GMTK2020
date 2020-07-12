@@ -64,25 +64,25 @@ public class PlayerController : MonoBehaviour
 
    private void Turn()
    {
-      //if (!PlayerDribble.instance.isKicking)
-      //{
-      //   if (_moveInput != Vector3.zero)
-      //   {
-      //      Quaternion newRotateDir = Quaternion.LookRotation(new Vector3(_moveVector.x, 0f, _moveVector.z));
-      //      playerModel.transform.rotation = Quaternion.Lerp(playerModel.transform.rotation, newRotateDir, rotateSpeed * Time.deltaTime);
-      //   }
-      //}
-      //else
-      //{
-      //   Quaternion newRotateDir = Quaternion.LookRotation(new Vector3(PlayerDribble.instance.target.transform.position.x, 0f, PlayerDribble.instance.target.transform.position.z));
-      //   playerModel.transform.rotation = Quaternion.Lerp(playerModel.transform.rotation, newRotateDir, (rotateSpeed / 2) * Time.deltaTime);
-      //}
-
-      if (_moveInput != Vector3.zero)
+      if (!PlayerDribble.instance.isKicking)
       {
-         Quaternion newRotateDir = Quaternion.LookRotation(new Vector3(_moveVector.x, 0f, _moveVector.z));
-         playerModel.transform.rotation = Quaternion.Lerp(playerModel.transform.rotation, newRotateDir, rotateSpeed * Time.deltaTime);
+         if (_moveInput != Vector3.zero)
+         {
+            Quaternion newRotateDir = Quaternion.LookRotation(new Vector3(_moveVector.x, 0f, _moveVector.z));
+            playerModel.transform.rotation = Quaternion.Lerp(playerModel.transform.rotation, newRotateDir, rotateSpeed * Time.deltaTime);
+         }
       }
+      else
+      {
+         Quaternion newRotateDir = Quaternion.LookRotation(new Vector3(PlayerDribble.instance.target.transform.position.x, 0f, PlayerDribble.instance.target.transform.position.z));
+         playerModel.transform.rotation = Quaternion.Lerp(playerModel.transform.rotation, newRotateDir, (rotateSpeed / 2) * Time.deltaTime);
+      }
+
+      //if (_moveInput != Vector3.zero)
+      //{
+      //   Quaternion newRotateDir = Quaternion.LookRotation(new Vector3(_moveVector.x, 0f, _moveVector.z));
+      //   playerModel.transform.rotation = Quaternion.Lerp(playerModel.transform.rotation, newRotateDir, rotateSpeed * Time.deltaTime);
+      //}
 
    }
 

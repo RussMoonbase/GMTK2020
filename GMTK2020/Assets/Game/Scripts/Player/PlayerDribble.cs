@@ -29,10 +29,18 @@ public class PlayerDribble : MonoBehaviour
    // Update is called once per frame
    void Update()
    {
+      if (Input.GetButtonDown("R3"))
+      {
+         Debug.Log("R3 pressed");
+         _aimVector = target.transform.position;
+         _aimVector.x = player.transform.position.x;
+         target.transform.position = _aimVector;
+      }
+
       //target.transform.Translate(new Vector3(Input.GetAxisRaw("MouseX"), Input.GetAxisRaw("MouseY"), 0f) * Time.deltaTime * 10f);
-      target.transform.Translate(new Vector3(0f, Input.GetAxisRaw("MouseY"), 0f) * Time.deltaTime * 10f);
+      target.transform.Translate(new Vector3(Input.GetAxisRaw("MouseX"), Input.GetAxisRaw("MouseY"), 0f) * Time.deltaTime * 10f);
       _aimVector = target.transform.position;
-      _aimVector.y = Mathf.Clamp(_aimVector.y, 0.3f, 11f);
+      _aimVector.y = Mathf.Clamp(_aimVector.y, 0.3f, 17f);
       target.transform.position = _aimVector;
    }
 
@@ -40,7 +48,7 @@ public class PlayerDribble : MonoBehaviour
    {
       if (collision.gameObject.tag == "Ball")
       {
-         Vector3 direction = target.transform.position - player.transform.position;
+         Vector3 direction = target.transform.position - playerModel.transform.position;
          direction = direction.normalized;
          Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
          if (isKicking)

@@ -43,7 +43,7 @@ public class PlayerDribble : MonoBehaviour
       //target.transform.Translate(new Vector3(Input.GetAxisRaw("MouseX"), Input.GetAxisRaw("MouseY"), 0f) * Time.deltaTime * 10f);
       target.transform.Translate(new Vector3(Input.GetAxisRaw("MouseX"), Input.GetAxisRaw("MouseY"), 0f) * Time.deltaTime * translateSpeed);
       _aimVector = target.transform.position;
-      _aimVector.y = Mathf.Clamp(_aimVector.y, 0.3f, 17f);
+      _aimVector.y = Mathf.Clamp(_aimVector.y, 0.3f, 19f);
       target.transform.position = _aimVector;
 
       _arrowVector = new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z);

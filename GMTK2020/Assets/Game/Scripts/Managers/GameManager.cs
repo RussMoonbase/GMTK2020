@@ -58,9 +58,12 @@ public class GameManager : MonoBehaviour
       }
       else
       {
+         PlayerPrefs.SetInt("homeScore", _homeScore);
+         PlayerPrefs.SetInt("awayScore", _awayScore);
          SpawnManager.instance.canSpawn = false;
          SpawnManager.instance.spawnOpponentCount = 0;
-         Debug.Log("Game Over");
+         UIManager.instance.changeToColor = true;
+         StartCoroutine(WaitToLoadScene());
       }
    }
 
@@ -82,4 +85,9 @@ public class GameManager : MonoBehaviour
       UIManager.instance.homeScoreText.text = _homeScore.ToString();
    }
 
+   private IEnumerator WaitToLoadScene()
+   {
+      yield return new WaitForSeconds(3.0f);
+      SceneLoader.instance.LoadNextScene();
+   }
 }

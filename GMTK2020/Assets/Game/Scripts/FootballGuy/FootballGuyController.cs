@@ -38,9 +38,10 @@ public class FootballGuyController : MonoBehaviour
       if (_animator.enabled)
       {
          GameManager.instance.opponentCount--;
-         _animator.enabled = false;
+         GameManager.instance.UpdateHomeScoreHit();
          navAgent.enabled = false;
          StartCoroutine(ExplosionDestroy());
+         _animator.enabled = false;
       }
 
       col.attachedRigidbody.AddForce((Camera.main.transform.forward * 150f), ForceMode.Impulse);
@@ -73,6 +74,7 @@ public class FootballGuyController : MonoBehaviour
       {
          GameManager.instance.opponentCount--;
          _animator.SetBool(FootballGuyAnimParameters.Celebrate.ToString(), true);
+         GameManager.instance.UpdateAwayScore();
          navAgent.enabled = false;
       }
 

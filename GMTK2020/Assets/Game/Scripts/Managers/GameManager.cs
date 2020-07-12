@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviour
       }
       else
       {
+         SpawnManager.instance.canSpawn = false;
+         SpawnManager.instance.spawnOpponentCount = 0;
          Debug.Log("Game Over");
       }
 

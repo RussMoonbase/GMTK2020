@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+public enum FootballGuyAnimParameters
+{
+   Celebrate
+}
+
+
 public class FootballGuyController : MonoBehaviour
 {
    public NavMeshAgent navAgent; //loaded in Inspector
@@ -43,6 +49,10 @@ public class FootballGuyController : MonoBehaviour
    private IEnumerator ExplosionDestroy()
    {
       yield return new WaitForSeconds(deathWaitTime);
+      if (_animator.enabled)
+      {
+         _animator.enabled = false;
+      }
       Vector3 explodePosition = this.transform.position;
       Collider[] colliders = Physics.OverlapSphere(explodePosition, 4f);
       foreach (Collider hit in colliders)
@@ -55,5 +65,17 @@ public class FootballGuyController : MonoBehaviour
          }
       }
       Destroy(this.gameObject, deathWaitTime);
+   }
+
+   public void CelebrateTouchdown()
+   {
+      if (navAgent.enabled)
+      {
+         GameManager.instance.opponentCount--;
+         _animator.SetBool(FootballGuyAnimParameters.Celebrate.ToString(), true);
+         navAgent.enabled = false;
+      }
+
+      StartCoroutine(ExplosionDestroy());
    }
 }

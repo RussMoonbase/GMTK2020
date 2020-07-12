@@ -20,7 +20,7 @@ public class Touchdown : MonoBehaviour
    {
       if (other.tag == "Opponent")
       {
-         other.GetComponentInParent<FootballGuyController>().TurnOnRagdoll(other.GetComponent<Collider>());
+         other.GetComponentInParent<FootballGuyController>().CelebrateTouchdown();
       }
    }
 }
